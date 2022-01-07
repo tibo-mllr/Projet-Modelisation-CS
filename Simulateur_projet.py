@@ -58,14 +58,30 @@ def systeme(t, X0):
 solution = solve_ivp(systeme, [0, 100], [
                      c10, c20, c30, c40, c50, c60], method='RK45', max_step=0.01)
 
+
+# Vérification de la stabilité
+#X_test = [318000, 3328000, 33226000, 249555000, 623886000, 2510000000]
+#solution = solve_ivp(systeme, [0, 2000], X_test, method='RK45', max_step=0.01)
+
 # Récupération des résultats
 s = [signal(c6) for c6 in solution.y[5]]
 
 if __name__ == "__main__":
-    plt.plot(solution.t, s, label="signal")
-    plt.ylabel("Intensité du signal")
-    plt.xlabel("Temps (jours)")
-    plt.title("signal")
-    plt.grid()
+    fig, axs = plt.subplots(4, 2)
 
+    axs[0][0].plot(solution.t, solution.y[0], label="c1")
+    axs[0][0].grid()
+    axs[0][1].plot(solution.t, solution.y[1], label="c2")
+    axs[0][1].grid()
+    axs[1][0].plot(solution.t, solution.y[2], label="c3")
+    axs[1][0].grid()
+    axs[1][1].plot(solution.t, solution.y[3], label="c4")
+    axs[1][1].grid()
+    axs[2][0].plot(solution.t, solution.y[4], label="c5")
+    axs[2][0].grid()
+    axs[2][1].plot(solution.t, solution.y[5], label="c6")
+    axs[2][1].grid()
+    axs[3][0].plot(solution.t, s, label="Signal")
+
+    plt.xlabel("Temps (jours)")
     plt.show()
