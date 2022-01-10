@@ -1,4 +1,5 @@
 from Simulateur_projet import *
+from scipy.optimize import fsolve
 
 
 def equilibre(p):

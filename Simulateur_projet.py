@@ -1,8 +1,5 @@
 # installé avec la commande "pip install scipy"
 from scipy.integrate import solve_ivp
-from scipy.optimize import fsolve
-import math
-import numpy as np
 import matplotlib.pyplot as plt
 
 # Définitions des paramètres du système
