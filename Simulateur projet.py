@@ -45,14 +45,15 @@ def systeme(t,X0):
     return [dc1_dt, dc2_dt, dc3_dt, dc4_dt, dc5_dt, dc6_dt]
 
 #Résolution
-solution = solve_ivp(systeme, [0,100], [c10,c20,c30,c40,c50,c60], method='RK45', max_step=0.01)
+solution = solve_ivp(systeme, [0,1000], [c10,c20,c30,c40,c50,c60], method='RK45', max_step=0.01)
 
 #Récupération des résultats
 s=[signal(c6) for c6 in solution.y[5]]
-plt.plot(solution.t, s , label="signal")
-plt.ylabel("Intensité du signal")
+c6= solution.y[5]
+plt.plot(solution.t, c6 , label="signal")
+plt.ylabel("Nombre de molécules")
 plt.xlabel("Temps (jours)")
-plt.title("signal")
+plt.title("Compartiment 6")
 plt.grid()
 
 plt.show()
