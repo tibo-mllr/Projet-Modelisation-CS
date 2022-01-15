@@ -3,7 +3,7 @@ from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
 import numpy as np
 from numpy.linalg import eig
-from numpy.linalg import inv
+
 
 # Définitions des paramètres du système
 a1, p1 = 0.7, 0.173
@@ -27,9 +27,8 @@ A= np.array([[   0,     0,     0,     0,     0,        Ga[0]],
             [    0,     0,     0, Nu[3], Al[3], B[3] + Ga[4]],
             [    0,     0,     0,     0, Nu[4],  B[4] - d  ]])
 
-print( inv(A))
 D,V = eig(A)
-print(D)
+#print(D)  #On affiche les valeurs propres 
 # Définition des conditions initiales
 c10 = 10**5
 c20 = 10**6
@@ -38,7 +37,7 @@ c40 = 0
 c50 = 0
 c60 = 0
 
-# Définition du système d'équation différentielle
+# Définition du système d'équationS différentielleS
 
 
 def signal(c6):
